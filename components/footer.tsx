@@ -1,25 +1,8 @@
+'use client'
+
 import Link from 'next/link'
 import { Facebook, Twitter, Linkedin, Instagram } from 'lucide-react'
-
-const footerLinks = {
-  platform: [
-    { name: 'Schemes', href: '/schemes' },
-    { name: 'Network', href: '/network' },
-    { name: 'Events', href: '/events' },
-    { name: 'Resources', href: '/resources' },
-  ],
-  company: [
-    { name: 'About Us', href: '/about' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'Contact', href: '/contact' },
-    { name: 'Blog', href: '/blog' },
-  ],
-  legal: [
-    { name: 'Privacy Policy', href: '/privacy' },
-    { name: 'Terms of Service', href: '/terms' },
-    { name: 'Cookie Policy', href: '/cookies' },
-  ],
-}
+import { useLanguage } from '@/contexts/language-context'
 
 const socialLinks = [
   { name: 'Facebook', icon: Facebook, href: '#' },
@@ -29,6 +12,28 @@ const socialLinks = [
 ]
 
 export function Footer() {
+  const { t, language } = useLanguage()
+
+  const footerLinks = {
+    platform: [
+      { name: t('nav.schemes'), href: '/schemes' },
+      { name: t('nav.network'), href: '/network' },
+      { name: t('nav.events'), href: '/events' },
+      { name: t('nav.resources'), href: '/resources' },
+    ],
+    company: [
+      { name: t('footer.about'), href: '/about' },
+      { name: language === 'en' ? 'Careers' : 'करियर', href: '/careers' },
+      { name: t('footer.contact'), href: '/contact' },
+      { name: language === 'en' ? 'Blog' : 'ब्लॉग', href: '/blog' },
+    ],
+    legal: [
+      { name: t('footer.privacy'), href: '/privacy' },
+      { name: t('footer.terms'), href: '/terms' },
+      { name: language === 'en' ? 'Cookie Policy' : 'कुकी नीति', href: '/cookies' },
+    ],
+  }
+
   return (
     <footer className="border-t border-border bg-card">
       <div className="mx-auto max-w-7xl px-4 py-12 lg:px-8">
@@ -41,7 +46,10 @@ export function Footer() {
               <span className="text-xl font-bold text-foreground">EnterNet</span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground">
-              The Future of Entrepreneur Networks. Connect, discover government schemes, and grow your business.
+              {language === 'en' 
+                ? 'The Future of Entrepreneur Networks. Connect, discover government schemes, and grow your business.'
+                : 'उद्यमी नेटवर्क का भविष्य। जुड़ें, सरकारी योजनाएं खोजें, और अपना व्यवसाय बढ़ाएं।'
+              }
             </p>
             <div className="mt-6 flex gap-4">
               {socialLinks.map((item) => (
@@ -58,10 +66,12 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Platform</h3>
+            <h3 className="text-sm font-semibold text-foreground">
+              {language === 'en' ? 'Platform' : 'प्लेटफॉर्म'}
+            </h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.platform.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -74,10 +84,12 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Company</h3>
+            <h3 className="text-sm font-semibold text-foreground">
+              {language === 'en' ? 'Company' : 'कंपनी'}
+            </h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.company.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -90,10 +102,12 @@ export function Footer() {
           </div>
 
           <div>
-            <h3 className="text-sm font-semibold text-foreground">Legal</h3>
+            <h3 className="text-sm font-semibold text-foreground">
+              {language === 'en' ? 'Legal' : 'कानूनी'}
+            </h3>
             <ul className="mt-4 space-y-3">
               {footerLinks.legal.map((link) => (
-                <li key={link.name}>
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-sm text-muted-foreground transition-colors hover:text-foreground"
@@ -108,7 +122,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-border pt-8">
           <p className="text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} EnterNet. All rights reserved.
+            &copy; {new Date().getFullYear()} EnterNet. {t('footer.copyright')}
           </p>
         </div>
       </div>

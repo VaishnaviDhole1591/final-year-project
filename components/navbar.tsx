@@ -11,18 +11,21 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
-
-const navigation = [
-  { name: 'Home', href: '/' },
-  { name: 'Schemes', href: '/schemes' },
-  { name: 'Network', href: '/network' },
-  { name: 'Events', href: '/events' },
-  { name: 'Forum', href: '/forum' },
-  { name: 'Resources', href: '/resources' },
-]
+import { LanguageToggle } from '@/components/language-toggle'
+import { useLanguage } from '@/contexts/language-context'
 
 export function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { t } = useLanguage()
+
+  const navigation = [
+    { name: t('nav.home'), href: '/' },
+    { name: t('nav.schemes'), href: '/schemes' },
+    { name: t('nav.network'), href: '/network' },
+    { name: t('nav.events'), href: '/events' },
+    { name: t('nav.forum'), href: '/forum' },
+    { name: t('nav.resources'), href: '/resources' },
+  ]
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
@@ -64,13 +67,14 @@ export function Navbar() {
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-4">
+          <LanguageToggle />
           <Link href="/login">
             <Button variant="ghost" size="sm">
-              Log in
+              {t('nav.login')}
             </Button>
           </Link>
           <Link href="/signup">
-            <Button size="sm">Sign up</Button>
+            <Button size="sm">{t('nav.signup')}</Button>
           </Link>
         </div>
       </nav>
@@ -90,13 +94,17 @@ export function Navbar() {
               </Link>
             ))}
             <div className="mt-4 flex flex-col gap-2 pt-4 border-t border-border">
+              <div className="flex items-center justify-between px-3 py-2">
+                <span className="text-sm text-muted-foreground">{t('language.switch')}</span>
+                <LanguageToggle />
+              </div>
               <Link href="/login" onClick={() => setMobileMenuOpen(false)}>
                 <Button variant="ghost" className="w-full justify-start">
-                  Log in
+                  {t('nav.login')}
                 </Button>
               </Link>
               <Link href="/signup" onClick={() => setMobileMenuOpen(false)}>
-                <Button className="w-full">Sign up</Button>
+                <Button className="w-full">{t('nav.signup')}</Button>
               </Link>
             </div>
           </div>
@@ -108,6 +116,7 @@ export function Navbar() {
 
 export function AuthNavbar({ user }: { user?: { name: string; email: string } }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const { t } = useLanguage()
   const currentUser = user || { name: 'John Doe', email: 'john@example.com' }
 
   return (
@@ -138,6 +147,7 @@ export function AuthNavbar({ user }: { user?: { name: string; email: string } })
         </div>
 
         <div className="hidden lg:flex lg:flex-1 lg:justify-end lg:items-center lg:gap-x-4">
+          <LanguageToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="flex items-center gap-2">
@@ -157,20 +167,20 @@ export function AuthNavbar({ user }: { user?: { name: string; email: string } })
               <DropdownMenuItem asChild>
                 <Link href="/dashboard" className="flex items-center">
                   <User className="mr-2 h-4 w-4" />
-                  Dashboard
+                  {t('nav.dashboard')}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link href="/dashboard/settings" className="flex items-center">
                   <Settings className="mr-2 h-4 w-4" />
-                  Settings
+                  {t('nav.settings')}
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem asChild>
                 <Link href="/" className="flex items-center text-destructive">
                   <LogOut className="mr-2 h-4 w-4" />
-                  Log out
+                  {t('nav.logout')}
                 </Link>
               </DropdownMenuItem>
             </DropdownMenuContent>
