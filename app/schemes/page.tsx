@@ -14,9 +14,14 @@ const filters = [
     name: 'Industry',
     options: [
       { id: 'all', label: 'All Industries' },
-      { id: 'technology', label: 'Technology' },
       { id: 'manufacturing', label: 'Manufacturing' },
       { id: 'services', label: 'Services' },
+      { id: 'trading', label: 'Trading' },
+      { id: 'technology', label: 'Technology' },
+      { id: 'traditional', label: 'Traditional Trades' },
+      { id: 'coir', label: 'Coir' },
+      { id: 'footwear', label: 'Footwear & Leather' },
+      { id: 'toy', label: 'Toy Manufacturing' },
     ]
   },
   {
@@ -33,6 +38,22 @@ const filters = [
       { id: 'loan', label: 'Loan' },
       { id: 'equity', label: 'Equity' },
       { id: 'guarantee', label: 'Guarantee' },
+      { id: 'credit', label: 'Credit' },
+      { id: 'support', label: 'Support/Services' },
+      { id: 'registration', label: 'Registration' },
+      { id: 'market', label: 'Market Access' },
+    ]
+  },
+  {
+    name: 'Category',
+    options: [
+      { id: 'credit-finance', label: 'Credit & Finance' },
+      { id: 'capital-subsidy', label: 'Capital Subsidy' },
+      { id: 'artisan', label: 'Artisan & Traditional' },
+      { id: 'startup', label: 'Startup & Innovation' },
+      { id: 'quality', label: 'Quality & Certification' },
+      { id: 'export', label: 'Export Promotion' },
+      { id: 'women-scst', label: 'Women/SC-ST Special' },
     ]
   }
 ]
