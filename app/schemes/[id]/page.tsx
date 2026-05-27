@@ -184,7 +184,7 @@ export default async function SchemeDetailPage({ params }: SchemeDetailPageProps
                   </CardHeader>
                   <CardContent className="space-y-4">
                     {schemes
-                      .filter(s => s.id !== scheme.id)
+                      .filter(s => s.id !== scheme.id && (s.fundingType === scheme.fundingType || s.industry === scheme.industry))
                       .slice(0, 3)
                       .map((relatedScheme) => (
                         <Link
