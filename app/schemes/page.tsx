@@ -11,19 +11,33 @@ import { schemes } from '@/lib/data'
 
 const filters = [
   {
-    name: 'Industry',
+    name: 'Category',
     options: [
-      { id: 'all', label: 'All Industries' },
-      { id: 'technology', label: 'Technology' },
-      { id: 'manufacturing', label: 'Manufacturing' },
-      { id: 'services', label: 'Services' },
+      { id: 'startup-funding', label: 'Startup Funding' },
+      { id: 'credit-support', label: 'Credit Support' },
+      { id: 'women-sc-st', label: 'Women & SC/ST' },
+      { id: 'innovation-technology', label: 'Innovation & Technology' },
+      { id: 'export-promotion', label: 'Export Promotion' },
+      { id: 'cluster-development', label: 'Cluster Development' },
+      { id: 'skill-development', label: 'Skill Development' },
+      { id: 'quality-certification', label: 'Quality & Certification' },
+      { id: 'food-processing', label: 'Food Processing' },
+      { id: 'traditional-industries', label: 'Traditional Industries' },
+      { id: 'regional-development', label: 'Regional Development' },
     ]
   },
   {
-    name: 'Location',
+    name: 'Industry',
     options: [
-      { id: 'pan-india', label: 'Pan India' },
-      { id: 'state-specific', label: 'State Specific' },
+      { id: 'all-industries', label: 'All Industries' },
+      { id: 'manufacturing', label: 'Manufacturing' },
+      { id: 'services', label: 'Services' },
+      { id: 'technology', label: 'Technology' },
+      { id: 'textiles', label: 'Textiles' },
+      { id: 'food-processing', label: 'Food Processing' },
+      { id: 'electronics', label: 'Electronics & IT' },
+      { id: 'agri-business', label: 'Agri-Business' },
+      { id: 'handicrafts', label: 'Handicrafts & Coir' },
     ]
   },
   {
@@ -31,8 +45,19 @@ const filters = [
     options: [
       { id: 'grant', label: 'Grant' },
       { id: 'loan', label: 'Loan' },
-      { id: 'equity', label: 'Equity' },
+      { id: 'subsidy', label: 'Subsidy' },
       { id: 'guarantee', label: 'Guarantee' },
+      { id: 'equity', label: 'Equity' },
+      { id: 'incentive', label: 'Incentive' },
+      { id: 'training', label: 'Training' },
+    ]
+  },
+  {
+    name: 'Location',
+    options: [
+      { id: 'pan-india', label: 'Pan India' },
+      { id: 'north-east', label: 'North East Region' },
+      { id: 'state-specific', label: 'State Specific' },
     ]
   }
 ]
