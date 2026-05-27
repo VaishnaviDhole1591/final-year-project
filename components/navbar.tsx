@@ -19,6 +19,7 @@ const navigation = [
   { name: 'Events', href: '/events' },
   { name: 'Forum', href: '/forum' },
   { name: 'Resources', href: '/resources' },
+  { name: 'Docs', href: '/documentation' },
 ]
 
 export function Navbar() {
